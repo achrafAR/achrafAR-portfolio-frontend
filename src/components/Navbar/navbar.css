@@ -1,0 +1,361 @@
+/* src/components/Navbar.css */
+
+.navbar-list ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    gap: 20px;
+  }
+  
+  .navbar-container.scrolled {
+    background-color: #191919;
+    transition: background-color 0.5s ease;
+  }
+  
+  .navbar-list {
+    display: flex;
+    align-items: center;
+    height: 6rem;
+    width: 40%;
+    padding: 40px;
+  }
+  
+  .navbar-list li {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .navbar-container {
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    transition: background-color 0.3s;
+  
+  }
+  
+  .navbar-logo img {
+    width: 96px;
+  }
+  
+  .navbar-logo {
+    width: 116px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .navbar-socialMedia {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+  }
+  .navbar-socialMedia-logo {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-socialMedia-logo a {
+    transition: transform 0.5s ease-in-out; /* Add a smooth transition */
+  }
+  
+  .navbar-socialMedia-logo a:hover {
+    transform: translateY(-5px); /* Move the logo up by 10 pixels */
+  }
+  
+  .navbar-socialMedia button {
+    font-weight: 100;
+    letter-spacing: 2px;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgb(45, 45, 53);
+  }
+  
+  .navbar-socialMedia button:hover {
+    background-color: #f4004d;
+  }
+  
+  .navbar-list li {
+    position: relative;
+  }
+  
+  .navbar-list li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0; /* Initial width is zero */
+    height: 3px; /* Border height */
+    background-color: #f4004d;
+    transition: width 0.5s ease-in-out; /* Add a smooth transition to width */
+  }
+  
+  .navbar-list li:hover::after {
+    width: 100%; /* Expand the width to 100% on hover */
+  }
+  
+  .social-media-burger{
+    display: none;
+  }
+  
+  @media (max-width: 767px) {
+    
+    .navbar-content {
+      display: none;
+    }
+    .navbar-socialMedia-resume {
+      display: none;
+    }
+  
+    .navbar-humburger{
+      display: block;
+  
+    }
+  
+    .navbar-humburger svg {
+      cursor: pointer;
+      height: 28px;
+      width: 28px;
+  
+    }
+  
+    .social-media-burger{
+      width: 55%;
+      display: flex;
+      justify-content: space-around;
+      margin-right: 15px;
+  
+  
+    }
+    .navbar-container{
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+  
+  
+    }
+  
+   .popup-content ul{
+    list-style-type: none;
+    color: white;
+  
+   }
+  
+   .navbar-popup {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100vh;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  .popup-close{
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 10%;
+  
+  }
+  
+  .popup-content{
+    position: absolute;
+    height: 200px;
+    width: 90%;
+    top: 9%;
+    left: 7%;
+  
+  
+  }
+  
+  .popup-content ul{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 0;
+    margin: 0;
+  
+  }
+  
+  
+  
+  .popup-content li {
+    height: 40px;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+  
+  }
+  
+  .popup-content li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Initial width is zero */
+    height: 3px; /* Border height */
+    background-color: #f4004d;
+    transition: width 0.5s ease-in-out; /* Add a smooth transition to width */
+  }
+  
+  .popup-content li:hover::after {
+    width: 100%; /* Expand the width to 100% on hover */
+  }
+  
+    
+  }
+  
+  
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    /* Show button and burger icon, hide social media */
+    
+    .navbar-list{
+      display: none;
+    }
+  
+    .social-media-burger {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+  
+    .social-media-burger > div:first-child {
+      display: none; /* Show the social media icons */
+    }
+  
+    .social-media-burger > div:last-child {
+      display: block; /* Show the burger icon */
+    }
+  
+    .navbar-content{
+      display: flex;
+      justify-content: flex-end;
+    }
+  
+    .navbar-humburger svg {
+      cursor: pointer;
+      height: 36px;
+      width: 36px;
+  
+    }
+  
+    .navbar-humburger{
+      width: 60px;
+      display: flex;
+      align-items: center;
+    }
+  
+    .navbar-socialMedia{
+      width: 70%;
+    }
+  
+  
+    .popup-content ul{
+      list-style-type: none;
+      color: white;
+    
+     }
+    
+     .navbar-popup {
+      background-color: black;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100vh;
+    
+    }
+    
+    
+    
+    
+    
+    .popup-close{
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      position: absolute;
+      top: 2%;
+      right: 10%;
+    
+    }
+    
+    .popup-content{
+      position: absolute;
+      height: 200px;
+      width: 90%;
+      top: 9%;
+      left: 7%;
+    
+    
+    }
+    
+    .popup-content ul{
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap:20px;
+      padding: 0;
+      margin: 0;
+    
+    }
+    
+    
+    
+    .popup-content li {
+      height: 40px;
+      position: relative;
+      font-family: "Poppins", sans-serif;
+    
+    }
+    
+    .popup-content li::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0; /* Initial width is zero */
+      height: 3px; /* Border height */
+      background-color: #f4004d;
+      transition: width 0.5s ease-in-out; /* Add a smooth transition to width */
+    }
+    
+    .popup-content li:hover::after {
+      width: 100%; /* Expand the width to 100% on hover */
+    }
+    
+  
+  }
+  
+  
