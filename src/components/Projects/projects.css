@@ -28,6 +28,8 @@
   }
   
   .projects-title p {
+    color: rgba(198,201,216,.75);
+
     font-family: Poppins, sans-serif;
     text-align: center;
     margin: 0;

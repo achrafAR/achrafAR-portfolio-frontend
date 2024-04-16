@@ -66,7 +66,7 @@
   }
   
   .conatct-form input[name="message"] {
-      height: 150px;
+      /* height: 150px; */
       padding-bottom: 110px; 
   }
   
