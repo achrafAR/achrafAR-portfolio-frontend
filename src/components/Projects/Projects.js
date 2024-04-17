@@ -27,6 +27,7 @@ function Projects() {
       <div className="projects-card-container">
         {projects.map(project => (
           <div key={project._id} className="projects-card-details" style={{ backgroundImage: `url(${project.image})` }}>
+            
             <div className="projects-card-details-text">
               <h3 className="project-title">{project.name}</h3>
               <p className="project-description">{project.description}</p>

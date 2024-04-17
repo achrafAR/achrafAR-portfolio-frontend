@@ -8,6 +8,7 @@
     padding: 100px 0;
     
   }
+
   
   .projects-title {
     display: flex;
@@ -47,11 +48,9 @@
   }
   
   .projects-card-details {
+    border: 3px solid white;
     opacity: 0.8;
     cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     height: 520px;
     border-radius: 10px;
     position: relative;

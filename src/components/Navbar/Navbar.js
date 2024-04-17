@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import MyResume from '../../Resume/Achraf Al Rachini CV-2024.pdf'
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -15,8 +16,7 @@ const Navbar = () => {
     const element = document.getElementById(id);
     if (element) {
       const navbarHeight =
-        document.querySelector(".navbar-container").offsetHeight;
-        console.log(element.offsetTop)
+        document.querySelector(".navbar-container").offsetHeight-70;
 
       const offsetPosition = element.offsetTop - navbarHeight;
       console.log(offsetPosition)
@@ -47,6 +47,13 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+
+
+    const handleDownload = () => {
+      window.open(MyResume, '_blank');
+    };
+  
 
   return (
     <div className={`navbar-container ${scrolling ? "scrolled" : ""}`}>
@@ -96,7 +103,7 @@ const Navbar = () => {
             </a>
           </div>
           <div className="navbar-socialMedia-resume">
-            <button>GO RESUME</button>
+            <button onClick={handleDownload}>GO RESUME</button>
           </div>
         </div>
       </div>

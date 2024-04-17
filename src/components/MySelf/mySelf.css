@@ -21,6 +21,7 @@
     letter-spacing: 4px;
     margin-bottom: 20px;
     color: rgba(198,201,216,.75);
+    /* margin: 0; */
 }
 
 .mySelf-name{
@@ -28,7 +29,7 @@
     color:white;
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
-    
+    margin: 0;
 
 }
 

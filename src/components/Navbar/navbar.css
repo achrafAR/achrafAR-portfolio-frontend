@@ -81,6 +81,7 @@
   }
   
   .navbar-socialMedia button {
+    cursor: pointer;
     font-weight: 100;
     letter-spacing: 2px;
     padding: 10px 25px;
