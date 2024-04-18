@@ -1,10 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.css";
-import imageProject from "../../Images/aboutMe-photo.avif";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Dashboard() {
 
+  const [projects, setProjects] = useState([]);
+
+ 
+
+  useEffect(() => {
+    fetchProjects();
+  }, []); // Run only once when the component mounts
+
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/projects');
+      setProjects(response.data.data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
+  };
+
+
+  // delete project
+  const handleDeleteProject = async (projectId) => {
+    try {
+      await axios.delete(`http://localhost:5000/projects/${projectId}`);
+      // After successfully deleting the project on the backend, you can choose
+      // to refetch the projects from the backend to update the state
+      fetchProjects(); // Assuming fetchProjects updates the projects state
+    } catch (error) {
+      console.error("Error deleting project:", error);
+    }
+  };
   // Logout function
 const handleLogout = () => {
   localStorage.removeItem("userInfo"); // Remove user information from localStorage
@@ -39,32 +68,7 @@ const handleLogout = () => {
     setShowEditModal("add");
   };
 
-  const projectsCard = [
-    {
-      id: 1,
-      image: imageProject,
-      name: "achraf",
-      description: "achraf al rachini",
-    },
-    {
-      id: 2,
-      image: imageProject,
-      name: "achraf",
-      description: "achraf al rachini",
-    },
-    {
-      id: 3,
-      image: imageProject,
-      name: "achraf",
-      description: "achraf al rachini",
-    },
-    {
-      id: 4,
-      image: imageProject,
-      name: "achraf",
-      description: "achraf al rachini",
-    },
-  ];
+  
 
   // Render the Dashboard content
   return (
@@ -123,14 +127,16 @@ const handleLogout = () => {
                   </div>
                 </div>
               )}
-          {projectsCard.map((card, index) => (
+          {projects.map((card, index) => (
             <div key={card.id} className="dashboard-projects">
               
               <div className="project-card-image">
                 <img src={card.image} alt="project" />
               </div>
               <div className="project-card-button">
-                <button>Delete project</button>
+              <button onClick={() => handleDeleteProject(card._id)}>
+                  Delete project
+                </button>
                 <button onClick={() => handleEditClick(index)}>
                   Edit project
                 </button>
