@@ -48,7 +48,9 @@
   }
   
   .projects-card-details {
-    border: 3px solid white;
+    background-repeat: no-repeat;
+    background-position:  center;
+    background-size: cover;
     opacity: 0.8;
     cursor: pointer;
     height: 520px;
