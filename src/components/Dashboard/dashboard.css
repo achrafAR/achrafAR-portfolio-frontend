@@ -128,7 +128,7 @@
   
   .add-project-button button:hover {
     transform: translateY(-5px); /* Move the logo up by 10 pixels */
-  background-color: #171717;
+    background-color: #171717;
     color: white;
   }
   
@@ -267,6 +267,9 @@
   }
   
   .save-form-add-project button{
+    transition: transform 0.5s ease-in-out; /* Add a smooth transition */
+
+      cursor: pointer;
       padding: 15px;
       width: 80%;
       border-radius: 15px;
@@ -277,10 +280,12 @@
       box-shadow: inset 0px 5px 10px  rgb(5,5,5);
       letter-spacing: 2px;
       font-family: Poppins, sans-serif;
-  
-  
-  
-      
+   
+  }
+
+  .save-form-add-project button:hover{
+
+    transform: translateY(-5px);
   }
   
   .form-add-project input[type="file"]::-webkit-file-upload-button {
