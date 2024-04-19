@@ -178,6 +178,7 @@
   }
   
   .close-form button{
+    cursor: pointer;
       position: absolute;
       right: 5%;
       top: 2%;
@@ -187,6 +188,7 @@
   }
   
   .save-form button{
+      cursor: pointer;
       width: 80%;
       padding: 15px;
       border-radius: 15px;
@@ -257,6 +259,7 @@
   
   
   .close-form-add-project button{
+    cursor: pointer;
       position: absolute;
       right: 5%;
       top: 2%;
