@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Dashboard() {
   const [projects, setProjects] = useState([]);
@@ -27,18 +28,45 @@ function Dashboard() {
 
   // delete project
   const handleDeleteProject = async (projectId) => {
-    const shouldDelete = window.confirm("Are you sure you want to delete this project?");
-    if (shouldDelete) {
     try {
-      await axios.delete(`http://localhost:5000/projects/${projectId}`);
-      // After successfully deleting the project on the backend, you can choose
-      // to refetch the projects from the backend to update the state
-      fetchProjects(); // Assuming fetchProjects updates the projects state
+      // Show confirmation toast and wait for user input
+      const confirm = await new Promise((resolve, reject) => {
+        const toastId = toast.dark(
+          <div>
+            <p>Are you sure you want to delete this project?</p>
+            <button onClick={() => resolve(true)}>Yes</button>
+            <button onClick={() => { resolve(false); toast.dismiss(toastId); }}>No</button>
+          </div>,
+          {
+            autoClose: false,
+            onClose: () => resolve(false),
+          }
+        );
+      });
+  
+      // If user confirms deletion
+      if (confirm) {
+        // Delete project
+        await axios.delete(`http://localhost:5000/projects/${projectId}`);
+        fetchProjects(); // Fetch projects after deletion
+  
+        // Dismiss confirmation toast
+        toast.dismiss();
+  
+        // Show toast notification after project deletion
+        toast.success('Project deleted successfully!');
+      }
     } catch (error) {
       console.error("Error deleting project:", error);
+      // Show error toast if deletion fails
+      toast.error('Failed to delete project');
     }
-  }
   };
+  
+  
+  
+  
+
   // Logout function
   const handleLogout = () => {
     localStorage.removeItem("userInfo"); // Remove user information from localStorage
@@ -76,6 +104,12 @@ function Dashboard() {
   };
   const handleAddProjectClick = () => {
     setShowEditModal("add");
+    setFormData({
+      name: "",
+      description: "",
+      link: "",
+      image: null,
+    });
   };
 
   // add project
@@ -99,11 +133,14 @@ function Dashboard() {
       // Assuming you have the projectId of the project being edited
       const projectId = projects[showEditModal]._id;
 
-      await axios.put(`http://localhost:5000/projects/${projectId}`, formDataToSend);
+      await axios.put(
+        `http://localhost:5000/projects/${projectId}`,
+        formDataToSend
+      );
 
       handleCloseModal();
       fetchProjects();
-      alert("Project updated successfully!");
+      toast.success("Project updated successfully!"); // Use toast.success instead of alert
     } catch (error) {
       console.error("Error updating project:", error);
     }
@@ -121,8 +158,7 @@ function Dashboard() {
 
       handleCloseModal();
       fetchProjects();
-      alert("Project added successfully!"); // Provide feedback to the user
-
+      toast.success("Project added successfully!"); // Use toast.success instead of alert
     } catch (error) {
       console.error("Error adding project:", error);
     }
@@ -236,7 +272,6 @@ function Dashboard() {
                       name="image"
                       accept="image/*"
                       onChange={handleFileChange}
-
                     />
                   </div>
                   <div className="save-form">
