@@ -14,7 +14,7 @@ function MySelf() {
               options={{
                 strings: ["FullStack Developer!", 
                           "MernStack Developer!",
-                          "content Writer!"],
+                          "Content Writer!"],
                 autoStart: true,
                 loop: true,
               }}
